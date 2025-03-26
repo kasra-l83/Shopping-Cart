@@ -9,7 +9,8 @@ export default {
       lightGray: "rgb(226 232 240)",
       darkGray: "#343A40",
       lightGreen: "rgb(40, 167, 69)",
-      lightBlue: "#0069D9"
+      lightBlue: "#0069D9",
+      lightRed: "#dc3545"
     },
     extend: {},
   },
