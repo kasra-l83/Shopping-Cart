@@ -5,7 +5,9 @@ export const MainLayout: React.FC= () =>{
   return (
     <>
       <Header />
-      <Outlet />
+      <div className="container mx-auto">
+        <Outlet />
+      </div>
     </>
   )
 }

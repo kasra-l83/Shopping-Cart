@@ -9,9 +9,9 @@ export const ProductCard: React.FC<{product: IProduct}>= ({product}) =>{
   return (
     <div className="border border-lightGray py-2 px-5 space-y-2 rounded">
       <img src={product.thumbnail} alt={product.title} className="place-self-center w-full"/>
-      <h4 className="text-xl font-medium">{product.title}</h4>
+      <h4 className="text-xl font-medium line-clamp-1">{product.title}</h4>
       <p className="text-base font-medium">₹ {product.price}</p>
-      <p className="text-base font-medium">{product.warrantyInformation}</p>
+      <p className="text-base font-medium line-clamp-1">{product.warrantyInformation}</p>
       <span className="flex">
         {[...Array(star)].map((_, index) =>(
           <FaStar key={index}/>
