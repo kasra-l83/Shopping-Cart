@@ -2,6 +2,18 @@ import { useState } from "react"
 import type { IProduct } from "../types/product"
 import { FaStar, FaRegStar } from "react-icons/fa"
 
+export const ProductCardSkeleton: React.FC= () =>{
+  return (
+    <div className="border border-lightGray py-2 px-5 space-y-2 rounded">
+      <div className="place-self-center bg-lightGray size-20 sm:size-72 md:size-48 lg:size-52 xl:size-48 2xl:size-60 rounded-full"></div>
+      <div className="w-full h-7 bg-lightGray rounded"></div>
+      <div className="w-16 h-5 bg-lightGray rounded"></div>
+      <div className="w-32 h-5 bg-lightGray rounded"></div>
+      <div className="w-24 h-5 bg-lightGray rounded"></div>
+      <div className="w-28 h-10 bg-lightGray rounded"></div>
+    </div>
+  )
+}
 export const ProductCard: React.FC<{product: IProduct}>= ({product}) =>{
   const [add, setAdd]= useState<boolean>(false);
   const star= Math.floor(product.rating);

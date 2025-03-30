@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react"
 import type { IProduct } from "../types/product"
 import { useQuery } from "@tanstack/react-query"
-import { ProductCard } from "../components/ProductCard"
+import { ProductCard, ProductCardSkeleton } from "../components/ProductCard"
 import { fetchProductsList } from "../apis/products.api"
 import FilterProductsBar from "../components/FilterProductsBar"
 
@@ -41,11 +41,17 @@ export const ProductsPage: React.FC= () =>{
     return (
       <main className="m-3 flex gap-x-8">
         <FilterProductsBar rating={rating} setRating={setRating} beauty={beauty} setBeauty={setBeauty} order={order} setOrder={setOrder}/>
-        <section className="mt-5 grid gap-x-5 gap-y-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredProducts.length> 0 ? (
+        <section className="mt-5 grid gap-x-5 gap-y-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {products.isSuccess && (
                 filteredProducts.map((product: IProduct) => <ProductCard key={product.id} product={product} />)
-            ) : (
+            )}
+            {filteredProducts.length=== 0 && products.isSuccess && (
                 <h3>Items not found</h3>
+            )}
+            {filteredProducts.length=== 0 && !products.isSuccess && (
+                [...Array(8)].map((_, index) =>(
+                    <ProductCardSkeleton key={index}/>
+                ))
             )}
         </section>
       </main>
