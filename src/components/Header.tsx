@@ -1,7 +1,10 @@
 import { FaSortDown } from "react-icons/fa6"
 import { MdShoppingCart } from "react-icons/md"
+import { useAppSelector } from "../store/hooks"
 
 function Header() {
+  const cartItems= useAppSelector((state) => state.cart.items);
+
   return (
     <header className="py-5 bg-darkGray">
       <div className="container mx-auto flex justify-around items-center text-[white]">
@@ -11,7 +14,7 @@ function Header() {
         />
         <button className="px-3 py-1 rounded bg-lightGreen flex gap-x-1 hover:bg-[green]">
           <MdShoppingCart className="text-3xl"/>
-          0
+          {cartItems.length}
           <FaSortDown />
         </button>
       </div>

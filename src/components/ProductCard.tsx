@@ -1,6 +1,7 @@
-import { useState } from "react"
 import type { IProduct } from "../types/product"
+import { add, remove } from "../store/cartSlice"
 import { FaStar, FaRegStar } from "react-icons/fa"
+import { useAppDispatch, useAppSelector } from "../store/hooks"
 
 export const ProductCardSkeleton: React.FC= () =>{
   return (
@@ -15,8 +16,18 @@ export const ProductCardSkeleton: React.FC= () =>{
   )
 }
 export const ProductCard: React.FC<{product: IProduct}>= ({product}) =>{
-  const [add, setAdd]= useState<boolean>(false);
+  const dispatch= useAppDispatch();
+  const cartItems= useAppSelector((state) => state.cart.items);
+  const inCart= cartItems.some((item) => item.id === product.id);
   const star= Math.floor(product.rating);
+
+  const cartActionHandler= () =>{
+    if (inCart) {
+      dispatch(remove(product.id));
+    }else {
+      dispatch(add(product));
+    }
+  }
 
   return (
     <div className="border border-lightGray py-2 px-5 space-y-2 rounded">
@@ -32,10 +43,10 @@ export const ProductCard: React.FC<{product: IProduct}>= ({product}) =>{
           <FaRegStar key={index+ star}/>
         ))}
       </span>
-      <button onClick={() => setAdd(!add)}
-        className={`py-2 px-3 rounded text-[white] ${add ? "bg-[red] hover:bg-lightRed" : "bg-[blue] hover:bg-lightBlue"}`}
+      <button onClick={cartActionHandler}
+        className={`py-2 px-3 rounded text-[white] ${inCart ? "bg-[red] hover:bg-lightRed" : "bg-[blue] hover:bg-lightBlue"}`}
       >
-        {add ? "Remove from Cart" : "Add to Cart"}
+        {inCart ? "Remove from Cart" : "Add to Cart"}
       </button>
     </div>
   )

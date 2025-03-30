@@ -1,3 +1,5 @@
+import { store } from "./store/store"
+import { Provider } from "react-redux"
 import { MainLayout } from "./layouts/main"
 import { ProductsPage } from "./pages/Products"
 import { QueryClient ,QueryClientProvider } from "@tanstack/react-query"
@@ -14,7 +16,9 @@ const router= createBrowserRouter(
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router}></RouterProvider>
+      <Provider store={store}>
+        <RouterProvider router={router}></RouterProvider>
+      </Provider>
     </QueryClientProvider>
   )
 }

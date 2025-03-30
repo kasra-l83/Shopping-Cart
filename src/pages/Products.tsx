@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react"
 import type { IProduct } from "../types/product"
 import { useQuery } from "@tanstack/react-query"
-import { ProductCard, ProductCardSkeleton } from "../components/ProductCard"
 import { fetchProductsList } from "../apis/products.api"
 import FilterProductsBar from "../components/FilterProductsBar"
+import { ProductCard, ProductCardSkeleton } from "../components/ProductCard"
 
 export const ProductsPage: React.FC= () =>{
     const [rating, setRating] = useState<number>(0)
@@ -18,7 +18,6 @@ export const ProductsPage: React.FC= () =>{
   
     const filteredProducts= useMemo(() =>{
         if (!products.data?.products) return []
-  
         let filtered= [...products.data.products]
         if (beauty) {
             filtered= filtered.filter(
@@ -56,4 +55,4 @@ export const ProductsPage: React.FC= () =>{
         </section>
       </main>
     )
-  }
+}
