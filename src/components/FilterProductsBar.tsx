@@ -22,7 +22,7 @@ function FilterProductsBar({ rating, setRating, beauty, setBeauty, order, setOrd
 
   return (
     <aside className="w-full h-screen bg-darkGray p-5 text-[white] space-y-5 max-w-[40%] md:max-w-[30%] lg:max-w-[20%]">
-      <h3 className="text-3xl">Filter Products</h3>
+      <h3 className="text-2xl sm:text-3xl">Filter Products</h3>
       <span className="flex gap-x-1">
         <input type="radio" value="asc" checked={order=== "asc"} onChange={changeOrder} />
         <label>Ascending</label>
@@ -35,7 +35,7 @@ function FilterProductsBar({ rating, setRating, beauty, setBeauty, order, setOrd
         <input type="checkbox" checked={beauty} onChange={() => setBeauty(!beauty)} />
         <label>Beauty</label>
       </span>
-      <span className="flex items-center gap-x-3">
+      <span className="items-center gap-x-3 sm:flex">
         <label>Rating: </label>
         <span className="flex">
           {[...Array(5)].map((_, index) => (
