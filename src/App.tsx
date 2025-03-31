@@ -1,8 +1,9 @@
-import { store } from "./store/store"
+import { store } from "./redux/store"
 import { Provider } from "react-redux"
 import { MainLayout } from "./layouts/main"
 import { ShoppingCart } from "./pages/Cart"
 import { ProductsPage } from "./pages/Products"
+import { Registration } from "./pages/Registration"
 import { QueryClient ,QueryClientProvider } from "@tanstack/react-query"
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom"
 
@@ -12,6 +13,7 @@ const router= createBrowserRouter(
     <Route path="/" element={<MainLayout/>}>
       <Route index={true} element={<ProductsPage/>}></Route>
       <Route path="/cart" element={<ShoppingCart/>}></Route>
+      <Route path="/registration" element={<Registration/>}></Route>
     </Route>
   )
 )

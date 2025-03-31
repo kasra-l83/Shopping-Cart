@@ -1,11 +1,13 @@
 import { FaTrash } from "react-icons/fa6"
-import { remove } from "../store/cartSlice"
+import { remove } from "../redux/cartSlice"
+import { useNavigate } from "react-router-dom"
 import { FaStar, FaRegStar } from "react-icons/fa"
-import { useAppDispatch, useAppSelector } from "../store/hooks"
+import { useAppDispatch, useAppSelector } from "../redux/hooks"
 
 export const ShoppingCart: React.FC= () =>{
     const dispatch= useAppDispatch();
     const cartItems= useAppSelector((state) => state.cart.items);
+    const navigation= useNavigate();
 
     return (
         <main className="p-3 flex gap-x-8">
@@ -43,7 +45,9 @@ export const ShoppingCart: React.FC= () =>{
             <aside className="w-full h-screen bg-darkGray p-5 text-[white] space-y-5 max-w-[40%] md:max-w-[30%] lg:max-w-[20%]">
                 <h2 className="text-2xl sm:text-3xl">Subtotal ({cartItems.length}) items</h2>
                 <h4 className="text-xl font-bold">Total: ₹ {cartItems.reduce((total, item) => total+ item.price, 0)}</h4>
-                <button disabled={cartItems.length<= 0} className="w-full py-2 rounded bg-[blue] hover:bg-lightBlue disabled:bg-lightGray">
+                <button disabled={cartItems.length<= 0} onClick={() => navigation("/registration")}
+                    className="w-full py-2 rounded bg-[blue] hover:bg-lightBlue disabled:bg-lightGray"
+                >
                     Proceed to Checkout
                 </button>
             </aside>

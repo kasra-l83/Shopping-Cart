@@ -1,12 +1,12 @@
 import type { IProduct } from "../types/product"
-import { add, remove } from "../store/cartSlice"
+import { add, remove } from "../redux/cartSlice"
 import { FaStar, FaRegStar } from "react-icons/fa"
-import { useAppDispatch, useAppSelector } from "../store/hooks"
+import { useAppDispatch, useAppSelector } from "../redux/hooks"
 
 export const ProductCardSkeleton: React.FC= () =>{
   return (
     <div className="border border-lightGray py-2 px-5 space-y-2 rounded">
-      <div className="place-self-center bg-lightGray size-20 sm:size-72 md:size-48 lg:size-52 xl:size-48 2xl:size-60 rounded-full"></div>
+      <div className="place-self-center bg-lightGray rounded-full size-20 sm:size-72 md:size-48 lg:size-52 xl:size-48 2xl:size-60"></div>
       <div className="w-full h-7 bg-lightGray rounded"></div>
       <div className="w-16 h-5 bg-lightGray rounded"></div>
       <div className="w-32 h-5 bg-lightGray rounded"></div>

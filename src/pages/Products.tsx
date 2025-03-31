@@ -6,9 +6,9 @@ import FilterProductsBar from "../components/FilterProductsBar"
 import { ProductCard, ProductCardSkeleton } from "../components/ProductCard"
 
 export const ProductsPage: React.FC= () =>{
-    const [rating, setRating] = useState<number>(0)
-    const [beauty, setBeauty] = useState<boolean>(false)
-    const [order, setOrder] = useState<"asc" | "desc" | null>(null)
+    const [rating, setRating] = useState<number>(0);
+    const [beauty, setBeauty] = useState<boolean>(false);
+    const [order, setOrder] = useState<"asc" | "desc" | null>(null);
   
     const products= useQuery({
         queryKey: ["products"],
