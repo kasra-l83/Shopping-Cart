@@ -20,7 +20,7 @@ export const Registration: React.FC= () =>{
         resolver: zodResolver(Schema)
     })
 
-    const Submit= (data: IRegistration) =>{
+    const submit= (data: IRegistration) =>{
         reset();
         setData(data);
         setOpen(true);
@@ -38,7 +38,7 @@ export const Registration: React.FC= () =>{
         <>
             <div className="py-10 space-y-7 max-w-[800px] mx-auto px-5 sm:px-0">
                 <h1 className="text-4xl font-medium">Registration Form</h1>
-                <form onSubmit={handleSubmit(Submit)} className="space-y-5 text-[white] py-12 rounded-2xl px-2 bg-darkGray">
+                <form onSubmit={handleSubmit(submit)} className="space-y-5 text-[white] py-12 rounded-2xl px-2 bg-darkGray">
                     <Controller defaultValue="" name="firstName" control={control} render={({ field, fieldState }) =>(
                         <Input label="First name" {...field} error={fieldState.error?.message}/>
                     )}/>
